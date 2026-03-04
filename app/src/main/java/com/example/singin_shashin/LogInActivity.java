@@ -43,6 +43,6 @@ public class LogInActivity extends AppCompatActivity {
                 return;
             }
             Toast.makeText(this, "Пользователь авторизован", Toast.LENGTH_SHORT).show();
-        });
+        });f
     }
 }
