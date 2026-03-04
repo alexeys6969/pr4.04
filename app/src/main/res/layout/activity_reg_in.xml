@@ -40,6 +40,7 @@
             android:textColor="#80000000"
             android:textSize="15sp"/>
         <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="deliver@email.ru"
@@ -66,6 +67,7 @@
             android:textColor="#80000000"
             android:textSize="15sp"/>
         <EditText
+            android:id="@+id/FirstName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Иванов"
@@ -92,6 +94,7 @@
             android:textColor="#80000000"
             android:textSize="15sp"/>
         <EditText
+            android:id="@+id/Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Иван"
@@ -118,6 +121,7 @@
             android:textColor="#80000000"
             android:textSize="15sp"/>
         <EditText
+            android:id="@+id/LastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Иванович"
@@ -144,6 +148,7 @@
             android:textColor="#80000000"
             android:textSize="15sp"/>
         <Spinner
+            android:id="@+id/gender"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:hint="Иван"
@@ -171,6 +176,7 @@
             android:textColor="#80000000"
             android:textSize="15sp"/>
         <EditText
+            android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="********"
