@@ -1,6 +1,9 @@
 package com.example.singin_shashin.presentations;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -11,6 +14,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.widget.Toast;
 
 import com.example.singin_shashin.R;
+import com.example.singin_shashin.datas.apis.UserCreate;
+import com.example.singin_shashin.datas.apis.UserLogin;
+import com.example.singin_shashin.datas.common.CheckInternet;
+import com.example.singin_shashin.domains.callbacks.MyResponseCallback;
+import com.example.singin_shashin.domains.models.User;
 
 public class RegInActivity extends AppCompatActivity {
 
@@ -22,6 +30,10 @@ public class RegInActivity extends AppCompatActivity {
         TextView bthOpenLogIn = findViewById(R.id.btn_open_log_in);
         bthOpenLogIn.setOnClickListener(v -> {
             finish();
+        });
+        Button registerButton = findViewById(R.id.appCompatButton);
+        registerButton.setOnClickListener(v -> {
+            onReg();
         });
     }
 
@@ -63,7 +75,37 @@ public class RegInActivity extends AppCompatActivity {
             Toast.makeText(this, "Введите пароль", Toast.LENGTH_SHORT).show();
             return;
         }
+        RequestUserRegister(Email, Firstname, Name, Lastname, genders.getSelectedItemPosition(), Password);
+    }
 
-        Toast.makeText(this, "Регистрация успешна для: " + Email, Toast.LENGTH_SHORT).show();
+    public void RequestUserRegister(String Email, String Firstname, String Lastname, String Surname, Integer Gender, String Password) {
+        Context context = this;
+        CheckInternet checkInternet = new CheckInternet(this);
+        User User = new User();
+        User.email = Email;
+        User.firstname = Firstname;
+        User.lastname = Lastname;
+        User.surname = Surname;
+        User.gender = Gender;
+        User.password = Password;
+
+        UserCreate RequestUserRegister = new UserCreate(
+                User,
+                checkInternet,
+                new MyResponseCallback() {
+                    @Override
+                    public void onCompile(String result) {
+                        Log.d("USER CREATE", result);
+                        Toast.makeText(context, "Успешная регистрация пользователя", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(String error) {
+                        Log.e("USER CREATE", error);
+                        Toast.makeText(context, "Регистрация не увенчалась успехом", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        RequestUserRegister.execute();
     }
 }
