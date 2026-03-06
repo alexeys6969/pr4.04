@@ -1,17 +1,16 @@
-package com.example.singin_shashin;
+package com.example.singin_shashin.presentations;
 
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
 import android.widget.Toast;
+
+import com.example.singin_shashin.R;
 
 public class RegInActivity extends AppCompatActivity {
 
